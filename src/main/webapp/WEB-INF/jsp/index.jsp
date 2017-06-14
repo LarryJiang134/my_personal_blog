@@ -11,6 +11,8 @@
     <title>index</title>
 </head>
 <body>
-This is a index page!!!
+
+Hello from spring web mvc
+
 </body>
 </html>
