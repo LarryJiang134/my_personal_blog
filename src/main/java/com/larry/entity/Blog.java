@@ -1,8 +1,7 @@
 package com.larry.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hangyanjiang on 2017/6/14.
@@ -23,6 +22,13 @@ public class Blog {
         return id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "blog")
+    private List<Item> items;
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -41,5 +47,21 @@ public class Blog {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

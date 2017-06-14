@@ -1,8 +1,7 @@
 package com.larry.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hangyanjiang on 2017/6/14.
@@ -20,6 +19,13 @@ public class User {
     private String email;
 
     private String password;
+
+    @ManyToMany
+    @JoinTable
+    private List<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogs;
 
     public Integer getId() {
         return id;
@@ -51,5 +57,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 }

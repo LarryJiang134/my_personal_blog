@@ -3,6 +3,8 @@ package com.larry.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 /**
  * Created by hangyanjiang on 2017/6/14.
@@ -16,6 +18,9 @@ public class Role {
     private Integer id;
 
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
     public Integer getId() {
         return id;
@@ -32,4 +37,13 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
 }
